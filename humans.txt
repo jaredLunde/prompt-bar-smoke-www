@@ -1,0 +1,10 @@
+/* TEAM */
+
+Built and deployed on Railway
+Site: https://railway.com
+Thanks: The Railway team, for the infrastructure that runs this site.
+
+/* SITE */
+
+Standards: HTML5, CSS3
+Components: Railway
