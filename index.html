@@ -4,85 +4,481 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Prompt Bar — describe a change, ship it</title>
+    <meta
+      name="description"
+      content="Prompt Bar turns one sentence into a reviewed pull request: it finds the right service, makes the change on a live preview, and opens a draft PR on your repo."
+    />
     <link rel="stylesheet" href="/styles.css" />
+    <svg class="sprite" aria-hidden="true" focusable="false">
+      <symbol id="i-check" viewBox="0 0 20 20">
+        <path
+          d="M4 10.5l4 4 8-9"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-dash" viewBox="0 0 20 20">
+        <path
+          d="M5 10h10"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+        />
+      </symbol>
+      <symbol id="i-shield" viewBox="0 0 20 20">
+        <path
+          d="M10 2l6 2.5v5c0 4-2.6 7-6 8.5-3.4-1.5-6-4.5-6-8.5v-5L10 2z"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M7 10l2 2 4-4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 20 20">
+        <circle
+          cx="10"
+          cy="10"
+          r="7.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+        />
+        <path
+          d="M10 5.5V10l3 2"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </symbol>
+      <symbol id="i-branch" viewBox="0 0 20 20">
+        <circle cx="6" cy="4.5" r="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <circle cx="6" cy="15.5" r="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <circle cx="14" cy="6.5" r="2" fill="none" stroke="currentColor" stroke-width="1.6" />
+        <path
+          d="M6 6.5v7M14 8.5c0 3-3 3.5-8 4"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+        />
+      </symbol>
+    </svg>
   </head>
   <body>
+    <a class="skip" href="#main">Skip to content</a>
+
     <header class="nav">
-      <a class="logo" href="/">Prompt Bar</a>
-      <nav>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="/docs">Docs</a>
-        <a class="button" href="#start">Get started</a>
-      </nav>
+      <div class="nav-inner">
+        <a class="logo" href="/">
+          <span class="logo-mark" aria-hidden="true">&gt;_</span>
+          Prompt Bar
+        </a>
+        <nav class="nav-links" aria-label="Main">
+          <a href="#benefits">Why</a>
+          <a href="#how">How it works</a>
+          <a href="#pricing">Pricing</a>
+          <a href="/docs">Docs</a>
+        </nav>
+        <a class="button primary nav-cta" href="#start">Start free</a>
+      </div>
     </header>
 
-    <main>
+    <main id="main">
+      <!-- Hero -->
       <section class="hero">
-        <h1>Describe a change. Ship it.</h1>
-        <p>
-          Prompt Bar turns one sentence into a pull request: it finds the right
-          service, makes the change on a live preview, and opens the PR for you
-          to merge.
-        </p>
-        <div class="actions">
-          <a class="button primary" id="start" href="#">Start free</a>
-          <a class="button" href="/docs">Read the docs</a>
-        </div>
-        <div class="prompt-demo">
-          <span class="prompt">&gt;</span> add a pricing page with three tiers
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <svg aria-hidden="true"><use href="#i-branch" /></svg>
+              Ships as a draft pull request on your repo
+            </p>
+            <h1>Describe a change.<br />Review the pull request.</h1>
+            <p class="lede">
+              Prompt Bar turns one sentence into a reviewed change. It finds the
+              right service in your project, makes the change on a live preview
+              you can open, and opens the PR. Nothing reaches production until
+              someone on your team merges it.
+            </p>
+
+            <form class="capture" id="start" novalidate>
+              <label for="email">Work email</label>
+              <div class="capture-row">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="you@company.com"
+                  required
+                />
+                <button class="button primary" type="submit">Start free</button>
+              </div>
+              <p class="capture-note" id="capture-note" role="status">
+                Free tier, no card. This demo form doesn't send anywhere.
+              </p>
+            </form>
+
+            <ul class="proof" aria-label="What you get">
+              <li><svg aria-hidden="true"><use href="#i-check" /></svg>Works with any GitHub repo</li>
+              <li><svg aria-hidden="true"><use href="#i-check" /></svg>Draft PRs only</li>
+              <li><svg aria-hidden="true"><use href="#i-check" /></svg>Preview URL per change</li>
+              <li><svg aria-hidden="true"><use href="#i-check" /></svg>Free tier, no card</li>
+            </ul>
+          </div>
+
+          <aside class="demo" aria-label="Example prompt and result">
+            <div class="demo-bar">
+              <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+              <span class="demo-title">prompt bar</span>
+            </div>
+            <div class="demo-body">
+              <p class="demo-prompt">
+                <span class="caret" aria-hidden="true">&gt;</span> add a pricing
+                page with three tiers
+              </p>
+              <ol class="demo-steps">
+                <li><span>Found service</span><code>www</code></li>
+                <li><span>Preview</span><code>pr-482.up.railway.app</code></li>
+                <li><span>Opened</span><code>#482 · draft</code></li>
+              </ol>
+              <p class="demo-foot">You review the diff. You merge.</p>
+            </div>
+          </aside>
         </div>
       </section>
 
-      <section class="features" id="features">
-        <h2>What it does</h2>
-        <div class="grid">
-          <article>
-            <h3>Knows your project</h3>
-            <p>Reads every service, repo and domain, so "the footer" means the right footer.</p>
-          </article>
-          <article>
-            <h3>Live preview</h3>
-            <p>Every change runs on its own machine with a URL you can open before you merge.</p>
-          </article>
-          <article>
-            <h3>Pull requests, not surprises</h3>
-            <p>Changes land as draft PRs on your repo, co-authored and ready for review.</p>
-          </article>
+      <!-- Benefits -->
+      <section class="band" id="benefits">
+        <div class="wrap">
+          <p class="kicker">Outcomes</p>
+          <h2>Small changes stop costing a sprint</h2>
+          <p class="section-lede">
+            The expensive part of a one-line change was never the code. It was
+            the ticket, the context switch, and the wait.
+          </p>
+          <div class="cards three">
+            <article class="card">
+              <span class="card-icon"><svg aria-hidden="true"><use href="#i-clock" /></svg></span>
+              <h3>Cut the queue for copy and config</h3>
+              <p>
+                Anyone who can describe the change can start it. No ticket, no
+                handoff, no engineer pulled off the roadmap for a footer link.
+              </p>
+            </article>
+            <article class="card">
+              <span class="card-icon"><svg aria-hidden="true"><use href="#i-shield" /></svg></span>
+              <h3>See it before you buy it</h3>
+              <p>
+                Every change runs on its own machine with a URL you can open.
+                You judge the real page, not a description of one.
+              </p>
+            </article>
+            <article class="card">
+              <span class="card-icon"><svg aria-hidden="true"><use href="#i-branch" /></svg></span>
+              <h3>Keep your review process</h3>
+              <p>
+                Work lands as a draft pull request on your repo, co-authored and
+                ready for the same review, CI, and approvals you already run.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="pricing" id="pricing">
-        <h2>Pricing</h2>
-        <div class="grid">
-          <article>
-            <h3>Hobby</h3>
-            <p class="price">$0</p>
-            <p>50 prompts a month, one project.</p>
-          </article>
-          <article>
-            <h3>Pro</h3>
-            <p class="price">$20</p>
-            <p>Unlimited prompts, previews for every change.</p>
-          </article>
-          <article>
-            <h3>Team</h3>
-            <p class="price">$60</p>
-            <p>Shared projects, review rules, SSO.</p>
-          </article>
+      <!-- How it works -->
+      <section class="band alt" id="how">
+        <div class="wrap">
+          <p class="kicker">How it works</p>
+          <h2>Three steps, and you are still in charge</h2>
+          <ol class="steps">
+            <li>
+              <span class="step-num" aria-hidden="true">1</span>
+              <h3>Describe the change</h3>
+              <p>
+                One sentence in plain words. Prompt Bar reads every service,
+                repo and domain in your project, so "the footer" resolves to the
+                right footer in the right repo.
+              </p>
+            </li>
+            <li>
+              <span class="step-num" aria-hidden="true">2</span>
+              <h3>Watch it on a live preview</h3>
+              <p>
+                The work happens on its own machine with a preview URL. Ask for
+                another pass while you are looking at it.
+              </p>
+            </li>
+            <li>
+              <span class="step-num" aria-hidden="true">3</span>
+              <h3>Merge the pull request</h3>
+              <p>
+                You get a draft PR with a real commit message and a diff to
+                read. Merging is a human decision, every time.
+              </p>
+            </li>
+          </ol>
         </div>
       </section>
 
-      <section class="quote">
-        <blockquote>"We stopped writing tickets for small changes. We just type them."</blockquote>
-        <p>— Engineering lead, a very real company</p>
+      <!-- Comparison -->
+      <section class="band" id="compare">
+        <div class="wrap">
+          <p class="kicker">Comparison</p>
+          <h2>By hand vs. Prompt Bar</h2>
+          <p class="section-lede">
+            Same safeguards, less of the work that surrounds them.
+          </p>
+          <p class="scroll-hint">Scroll the table sideways to compare →</p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Comparison table, scrollable">
+            <table class="compare">
+              <caption class="sr-only">
+                Doing a small change by hand compared with doing it through Prompt Bar
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Step</th>
+                  <th scope="col">By hand</th>
+                  <th scope="col"><span class="th-accent">Prompt Bar</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Getting started</th>
+                  <td>File a ticket, wait for an engineer to pick it up</td>
+                  <td><svg aria-hidden="true"><use href="#i-check" /></svg>Type the sentence</td>
+                </tr>
+                <tr>
+                  <th scope="row">Finding the code</th>
+                  <td>Guess which service and repo owns the page</td>
+                  <td><svg aria-hidden="true"><use href="#i-check" /></svg>Resolved from your project</td>
+                </tr>
+                <tr>
+                  <th scope="row">Previews</th>
+                  <td>Spin up a branch deploy, or review a screenshot</td>
+                  <td><svg aria-hidden="true"><use href="#i-check" /></svg>A live URL for every change</td>
+                </tr>
+                <tr>
+                  <th scope="row">Review</th>
+                  <td>Pull request, when someone gets to it</td>
+                  <td><svg aria-hidden="true"><use href="#i-check" /></svg>Draft pull request, immediately</td>
+                </tr>
+                <tr>
+                  <th scope="row">Audit trail</th>
+                  <td>Scattered across chat threads and tickets</td>
+                  <td><svg aria-hidden="true"><use href="#i-check" /></svg>Commits and PRs in your repo</td>
+                </tr>
+                <tr>
+                  <th scope="row">Who can merge</th>
+                  <td>Your team</td>
+                  <td><svg aria-hidden="true"><use href="#i-check" /></svg>Your team, unchanged</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section class="band alt" id="pricing">
+        <div class="wrap">
+          <p class="kicker">Pricing</p>
+          <h2>Priced per person, not per ticket</h2>
+          <p class="section-lede">
+            Start free. Move up when previews and shared projects start paying
+            for themselves.
+          </p>
+          <div class="cards three tiers">
+            <article class="card tier">
+              <h3>Hobby</h3>
+              <p class="price"><span class="amount">$0</span></p>
+              <p class="tier-note">For a side project or a trial run.</p>
+              <ul class="ticks">
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>50 prompts a month</li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>One project</li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>Draft pull requests</li>
+                <li class="off"><svg aria-hidden="true"><use href="#i-dash" /></svg>Previews on every change</li>
+                <li class="off"><svg aria-hidden="true"><use href="#i-dash" /></svg>Shared projects</li>
+              </ul>
+              <a class="button block" href="#start">Start free</a>
+            </article>
+
+            <article class="card tier featured">
+              <p class="badge">
+                <svg aria-hidden="true"><use href="#i-check" /></svg>Recommended
+              </p>
+              <h3>Pro</h3>
+              <p class="price"><span class="amount">$20</span><span class="per">/user, month</span></p>
+              <p class="tier-note">For the person shipping changes every day.</p>
+              <ul class="ticks">
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>Unlimited prompts</li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>A live preview for every change</li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>Unlimited projects</li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>Draft pull requests</li>
+                <li class="off"><svg aria-hidden="true"><use href="#i-dash" /></svg>SSO and review rules</li>
+              </ul>
+              <a class="button primary block" href="#start">Start free, upgrade later</a>
+            </article>
+
+            <article class="card tier">
+              <h3>Team</h3>
+              <p class="price"><span class="amount">$60</span><span class="per">/user, month</span></p>
+              <p class="tier-note">For a team with a review process to honour.</p>
+              <ul class="ticks">
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>Everything in Pro</li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>Shared projects</li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>Review rules</li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>SSO</li>
+                <li><svg aria-hidden="true"><use href="#i-check" /></svg>Audit trail across the workspace</li>
+              </ul>
+              <a class="button block" href="#start">Start free</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Security -->
+      <section class="band security">
+        <div class="wrap security-grid">
+          <div>
+            <p class="kicker">Security and control</p>
+            <h2>Your repo. Your merge button.</h2>
+            <p class="section-lede">
+              Prompt Bar is a contributor, not an administrator. The safeguards
+              you already have are the safeguards it works inside.
+            </p>
+          </div>
+          <ul class="ticks big">
+            <li>
+              <svg aria-hidden="true"><use href="#i-shield" /></svg>
+              <span><strong>Draft PRs only.</strong> Nothing opens ready for review or merges itself.</span>
+            </li>
+            <li>
+              <svg aria-hidden="true"><use href="#i-shield" /></svg>
+              <span><strong>Your repo, your branches.</strong> Work happens on a branch, never on your default branch.</span>
+            </li>
+            <li>
+              <svg aria-hidden="true"><use href="#i-shield" /></svg>
+              <span><strong>You merge.</strong> CI, approvals and branch protection all still apply.</span>
+            </li>
+            <li>
+              <svg aria-hidden="true"><use href="#i-shield" /></svg>
+              <span><strong>Readable history.</strong> Every change is a commit with a real message, co-authored.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Quote -->
+      <section class="band alt quote">
+        <div class="wrap">
+          <figure>
+            <blockquote>
+              "We stopped writing tickets for small changes. We just type them."
+            </blockquote>
+            <figcaption>Engineering lead, Prompt Bar customer</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="band" id="faq">
+        <div class="wrap narrow">
+          <p class="kicker">FAQ</p>
+          <h2>Questions a reviewer will ask</h2>
+          <div class="faq">
+            <details>
+              <summary>Can it push straight to production?</summary>
+              <p>
+                No. Changes land as draft pull requests on a branch. Merging is
+                a human action, subject to the same CI and approvals as any
+                other PR.
+              </p>
+            </details>
+            <details>
+              <summary>What if it picks the wrong service?</summary>
+              <p>
+                It reads your project's services, repos and domains before it
+                edits anything, and tells you which one it chose. If the choice
+                is wrong, say so and it moves.
+              </p>
+            </details>
+            <details>
+              <summary>Can I see the change before it becomes a PR?</summary>
+              <p>
+                Yes. Each change runs on its own machine with a preview URL. Ask
+                for another pass while you are looking at it.
+              </p>
+            </details>
+            <details>
+              <summary>Who on the team needs a seat?</summary>
+              <p>
+                Anyone who writes prompts. Reviewing and merging happens in
+                GitHub, so reviewers do not need a Prompt Bar seat.
+              </p>
+            </details>
+            <details>
+              <summary>What happens when we hit the free limit?</summary>
+              <p>
+                Hobby stops at 50 prompts a month and waits for the next month.
+                Nothing is deleted and nothing is charged without you upgrading.
+              </p>
+            </details>
+            <details>
+              <summary>Does it work with our existing repo?</summary>
+              <p>
+                It works with any GitHub repo you can grant access to. There is
+                nothing to migrate and no change to your build.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Closing CTA -->
+      <section class="closing">
+        <div class="wrap">
+          <h2>Try it on the next small change</h2>
+          <p>
+            Free tier, no card, and the worst case is a draft pull request you
+            close.
+          </p>
+          <div class="closing-actions">
+            <a class="button primary lg" href="#start">Start free</a>
+            <a class="button ghost lg" href="/docs">Read the docs</a>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>© 2026 Prompt Bar</span>
-      <a href="/docs">Docs</a>
-      <a href="/changelog">Changelog</a>
+      <div class="wrap footer-inner">
+        <span class="logo footer-logo">
+          <span class="logo-mark" aria-hidden="true">&gt;_</span> Prompt Bar
+        </span>
+        <nav class="footer-links" aria-label="Footer">
+          <a href="/docs">Docs</a>
+          <a href="/changelog">Changelog</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <span class="copy">© 2026 Prompt Bar</span>
+      </div>
     </footer>
+
+    <script src="/main.js" defer></script>
   </body>
 </html>
