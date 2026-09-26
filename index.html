@@ -20,19 +20,42 @@
     <main>
       <section class="hero">
         <h1>Describe a change. Ship it.</h1>
-        <p>
-          Prompt Bar turns one sentence into a pull request: it finds the right
-          service, makes the change on a live preview, and opens the PR for you
-          to merge.
-        </p>
+        <p>One sentence in, one pull request out — on a live preview you can open first.</p>
+
+        <div class="prompt-bar">
+          <span class="prompt-chev">&gt;</span>
+          <span class="prompt-text" id="prompt-text">add a pricing page with three tiers</span><span class="prompt-caret" aria-hidden="true"></span>
+          <kbd class="prompt-key">Enter</kbd>
+        </div>
+
         <div class="actions">
           <a class="button primary" id="start" href="#">Start free</a>
-          <a class="button" href="/docs">Read the docs</a>
-        </div>
-        <div class="prompt-demo">
-          <span class="prompt">&gt;</span> add a pricing page with three tiers
+          <a class="hero-link" href="/docs">Read the docs →</a>
         </div>
       </section>
+
+      <script>
+        (function () {
+          var el = document.getElementById("prompt-text");
+          if (!el || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          var lines = [
+            "add a pricing page with three tiers",
+            "fix the mobile nav overflow",
+            "send a Slack message when a deploy fails",
+          ];
+          var i = 0, c = 0, erasing = false;
+          el.textContent = "";
+          (function tick() {
+            var line = lines[i];
+            c += erasing ? -1 : 1;
+            el.textContent = line.slice(0, c);
+            var wait = erasing ? 24 : 42;
+            if (!erasing && c === line.length) { erasing = true; wait = 1800; }
+            else if (erasing && c === 0) { erasing = false; i = (i + 1) % lines.length; wait = 400; }
+            setTimeout(tick, wait);
+          })();
+        })();
+      </script>
 
       <section class="features" id="features">
         <h2>What it does</h2>
