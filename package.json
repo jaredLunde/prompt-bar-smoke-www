@@ -1,0 +1,8 @@
+{
+  "name": "prompt-bar-www",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  }
+}
