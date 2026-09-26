@@ -4,85 +4,272 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Prompt Bar — describe a change, ship it</title>
+    <meta
+      name="description"
+      content="Prompt Bar turns one sentence into a pull request: it finds the right service, makes the change on a live preview, and opens the PR."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
+    <a class="skip" href="#main">Skip to content</a>
+
     <header class="nav">
-      <a class="logo" href="/">Prompt Bar</a>
-      <nav>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="/docs">Docs</a>
-        <a class="button" href="#start">Get started</a>
-      </nav>
+      <div class="nav__in">
+        <a class="logo" href="/">
+          <span class="logo__mark" aria-hidden="true">▚</span>
+          prompt-bar<span class="caret" aria-hidden="true"></span>
+        </a>
+        <nav aria-label="Primary">
+          <a href="#capabilities">capabilities</a>
+          <a href="#pricing">pricing</a>
+          <a href="/docs">docs</a>
+          <a href="/changelog">changelog</a>
+          <a class="btn btn--primary" href="#start">get started</a>
+        </nav>
+      </div>
     </header>
 
-    <main>
+    <main id="main">
       <section class="hero">
-        <h1>Describe a change. Ship it.</h1>
-        <p>
-          Prompt Bar turns one sentence into a pull request: it finds the right
-          service, makes the change on a live preview, and opens the PR for you
-          to merge.
-        </p>
-        <div class="actions">
-          <a class="button primary" id="start" href="#">Start free</a>
-          <a class="button" href="/docs">Read the docs</a>
-        </div>
-        <div class="prompt-demo">
-          <span class="prompt">&gt;</span> add a pricing page with three tiers
+        <div class="hero__in">
+          <div class="hero__copy">
+            <p class="kicker">v2.4.0 &middot; ship from one sentence</p>
+            <h1>Describe a change.<br /><span class="hl">Ship it.</span></h1>
+            <p class="lede">
+              One sentence in. A pull request out. Prompt Bar finds the right
+              service, makes the change on a live preview machine, and opens the
+              PR on your repo. You read the diff and merge.
+            </p>
+            <div class="actions">
+              <a class="btn btn--primary" id="start" href="/docs">start free →</a>
+              <a class="btn" href="/docs">read the docs</a>
+            </div>
+            <dl class="specs">
+              <div><dt>install</dt><dd>0 steps, it reads the project</dd></div>
+              <div><dt>output</dt><dd>draft PR, co-authored</dd></div>
+              <div><dt>rollback</dt><dd>close the PR</dd></div>
+            </dl>
+          </div>
+
+          <div class="term" id="term">
+            <div class="term__bar">
+              <span class="term__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="term__title">~/acme/web — prompt bar</span>
+              <span class="term__badge" id="term-badge">idle</span>
+            </div>
+            <div
+              class="term__body"
+              id="term-body"
+              role="img"
+              aria-label="A terminal session: the prompt 'add a pricing page with three tiers to the marketing site' is typed, Prompt Bar picks the www service, edits two files, shows a diff of plus 84 and minus 3 lines, and opens draft pull request 412 with a preview URL."
+            >
+              <p class="ln ln--cmd">
+                <span class="sig">❯</span
+                ><span class="typed" id="typed"></span
+                ><span class="caret caret--type" id="type-caret" aria-hidden="true"></span>
+              </p>
+
+              <p class="ln step" data-step="1">
+                <span class="tag tag--scan">scan</span> 6 services ·
+                matched <span class="ok">www</span>
+                <span class="dim">(marketing site, next@15)</span>
+              </p>
+              <p class="ln step" data-step="2">
+                <span class="tag tag--edit">edit</span>
+                app/pricing/page.tsx <span class="dim">new</span>
+              </p>
+              <p class="ln step" data-step="3">
+                <span class="tag tag--edit">edit</span>
+                components/nav.tsx <span class="dim">+1 link</span>
+              </p>
+              <p class="ln step diffline" data-step="4">
+                <span class="add">+ &lt;Tier name="Hobby" price={0} /&gt;</span>
+              </p>
+              <p class="ln step diffline" data-step="5">
+                <span class="add">+ &lt;Tier name="Pro" price={20} featured /&gt;</span>
+              </p>
+              <p class="ln step diffline" data-step="6">
+                <span class="add">+ &lt;Tier name="Team" price={60} /&gt;</span>
+              </p>
+              <p class="ln step diffline" data-step="7">
+                <span class="del">- &lt;ComingSoon /&gt;</span>
+              </p>
+              <p class="ln step" data-step="8">
+                <span class="tag tag--test">test</span> 41 passed ·
+                <span class="dim">build 12.4s</span>
+              </p>
+              <p class="ln step" data-step="9">
+                <span class="tag tag--prev">live</span>
+                <span class="link">pr-412.up.railway.app</span>
+              </p>
+              <p class="ln step result" data-step="10">
+                <span class="tag tag--pr">PR</span>
+                <strong>#412</strong> add pricing page
+                <span class="count add">+84</span>
+                <span class="count del">−3</span>
+                <span class="chip">draft</span>
+              </p>
+              <p class="ln step dim" data-step="11">
+                done in 71s · waiting on you
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="features" id="features">
-        <h2>What it does</h2>
-        <div class="grid">
-          <article>
-            <h3>Knows your project</h3>
-            <p>Reads every service, repo and domain, so "the footer" means the right footer.</p>
-          </article>
-          <article>
-            <h3>Live preview</h3>
-            <p>Every change runs on its own machine with a URL you can open before you merge.</p>
-          </article>
-          <article>
-            <h3>Pull requests, not surprises</h3>
-            <p>Changes land as draft PRs on your repo, co-authored and ready for review.</p>
-          </article>
+      <section class="block" id="capabilities" aria-labelledby="cap-h">
+        <div class="block__in">
+          <div class="shead">
+            <span class="num">01</span>
+            <h2 id="cap-h">capabilities</h2>
+            <span class="rule" aria-hidden="true"></span>
+            <span class="dim">3 of 3</span>
+          </div>
+          <ul class="rows">
+            <li class="row">
+              <span class="row__key">context</span>
+              <div class="row__main">
+                <h3>It knows which thing you meant</h3>
+                <p>
+                  Every service, repo, branch and domain in the project is
+                  indexed, so “the footer” resolves to the footer of the site
+                  that actually serves that domain — not the other four.
+                </p>
+              </div>
+              <code class="row__meta">resolve → www</code>
+            </li>
+            <li class="row">
+              <span class="row__key">preview</span>
+              <div class="row__main">
+                <h3>Every change gets a machine</h3>
+                <p>
+                  The work happens on an isolated box with a real URL and real
+                  data fixtures. You click it and use the change before anyone
+                  reviews a line of it.
+                </p>
+              </div>
+              <code class="row__meta">pr-412.up.railway.app</code>
+            </li>
+            <li class="row">
+              <span class="row__key">output</span>
+              <div class="row__main">
+                <h3>Pull requests, not surprises</h3>
+                <p>
+                  Changes land as draft PRs on your repo, co-authored and
+                  scoped. Nothing reaches main until a human hits merge. The
+                  undo button is “close”.
+                </p>
+              </div>
+              <code class="row__meta">gh pr view 412</code>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <section class="pricing" id="pricing">
-        <h2>Pricing</h2>
-        <div class="grid">
-          <article>
-            <h3>Hobby</h3>
-            <p class="price">$0</p>
-            <p>50 prompts a month, one project.</p>
-          </article>
-          <article>
-            <h3>Pro</h3>
-            <p class="price">$20</p>
-            <p>Unlimited prompts, previews for every change.</p>
-          </article>
-          <article>
-            <h3>Team</h3>
-            <p class="price">$60</p>
-            <p>Shared projects, review rules, SSO.</p>
-          </article>
+      <section class="block" id="pricing" aria-labelledby="price-h">
+        <div class="block__in">
+          <div class="shead">
+            <span class="num">02</span>
+            <h2 id="price-h">pricing</h2>
+            <span class="rule" aria-hidden="true"></span>
+            <span class="dim">usd / month</span>
+          </div>
+          <div class="tiers">
+            <article class="tier">
+              <h3>hobby</h3>
+              <p class="tier__price"><span class="cur">$</span>0</p>
+              <p class="tier__note">for one side project</p>
+              <ul class="ticks">
+                <li>50 prompts / month</li>
+                <li>1 project</li>
+                <li>public repos</li>
+                <li>community support</li>
+              </ul>
+              <a class="btn btn--wide" href="/docs">start free</a>
+            </article>
+            <article class="tier tier--on">
+              <p class="tier__flag">most used</p>
+              <h3>pro</h3>
+              <p class="tier__price"><span class="cur">$</span>20</p>
+              <p class="tier__note">for the person who ships</p>
+              <ul class="ticks">
+                <li>unlimited prompts</li>
+                <li>preview machine per change</li>
+                <li>private repos</li>
+                <li>email support</li>
+              </ul>
+              <a class="btn btn--primary btn--wide" href="/docs">get pro</a>
+            </article>
+            <article class="tier">
+              <h3>team</h3>
+              <p class="tier__price"><span class="cur">$</span>60</p>
+              <p class="tier__note">per seat, for a group</p>
+              <ul class="ticks">
+                <li>everything in pro</li>
+                <li>shared projects</li>
+                <li>review rules &amp; protected paths</li>
+                <li>SSO + audit log</li>
+              </ul>
+              <a class="btn btn--wide" href="/docs">talk to us</a>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="quote">
-        <blockquote>"We stopped writing tickets for small changes. We just type them."</blockquote>
-        <p>— Engineering lead, a very real company</p>
+      <section class="block block--quote" aria-labelledby="note-h">
+        <div class="block__in">
+          <div class="shead">
+            <span class="num">03</span>
+            <h2 id="note-h">field notes</h2>
+            <span class="rule" aria-hidden="true"></span>
+          </div>
+          <figure class="quote">
+            <blockquote>
+              <span class="sig" aria-hidden="true">❯</span> We stopped writing
+              tickets for small changes. We just type them.
+            </blockquote>
+            <figcaption>
+              <span class="dim">—</span> engineering lead ·
+              <span class="dim">a very real company</span>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="block cta" aria-labelledby="cta-h">
+        <div class="block__in cta__in">
+          <div>
+            <h2 id="cta-h">Type the change. Read the diff.</h2>
+            <p class="dim">
+              Free to start. No card, no install, no build step — same as this
+              page.
+            </p>
+          </div>
+          <div class="actions">
+            <a class="btn btn--primary" href="/docs">start free →</a>
+            <a class="btn" href="/changelog">changelog</a>
+          </div>
+        </div>
       </section>
     </main>
 
     <footer class="footer">
-      <span>© 2026 Prompt Bar</span>
-      <a href="/docs">Docs</a>
-      <a href="/changelog">Changelog</a>
+      <div class="footer__in">
+        <span class="dim">© 2026 prompt bar</span>
+        <nav aria-label="Footer">
+          <a href="/docs">docs</a>
+          <a href="/changelog">changelog</a>
+        </nav>
+        <span class="dim status"><i class="dot" aria-hidden="true"></i> all systems nominal</span>
+      </div>
     </footer>
+
+    <script src="/term.js" defer></script>
   </body>
 </html>
