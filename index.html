@@ -19,18 +19,72 @@
 
     <main>
       <section class="hero">
-        <h1>Describe a change. Ship it.</h1>
-        <p>
-          Prompt Bar turns one sentence into a pull request: it finds the right
-          service, makes the change on a live preview, and opens the PR for you
-          to merge.
-        </p>
-        <div class="actions">
-          <a class="button primary" id="start" href="#">Start free</a>
-          <a class="button" href="/docs">Read the docs</a>
+        <div class="hero-copy">
+          <h1>Describe a change. Ship it.</h1>
+          <p>
+            Prompt Bar turns one sentence into a pull request. It finds the
+            right service, makes the change on a live preview, and opens the PR
+            for you to merge.
+          </p>
+          <div class="actions">
+            <a class="button primary" id="start" href="#">Start free</a>
+            <a class="button" href="/docs">Read the docs</a>
+          </div>
+          <p class="hero-note">No credit card. Works on your existing repos.</p>
         </div>
-        <div class="prompt-demo">
-          <span class="prompt">&gt;</span> add a pricing page with three tiers
+
+        <div class="hero-proof">
+          <div class="pr-card">
+            <div class="pr-prompt">
+              <span class="prompt">&gt;</span>
+              <span>add a pricing page with three tiers</span>
+            </div>
+
+            <div class="pr-body">
+              <div class="pr-repo">
+                acme/storefront
+                <span class="pr-sep">·</span>
+                <span class="pr-branch">prompt-bar/pricing-page</span>
+                <span class="pr-sep">→</span>
+                <span class="pr-branch">main</span>
+              </div>
+
+              <div class="pr-title">
+                <span class="pr-badge">Draft</span>
+                Add a pricing page with three tiers
+              </div>
+
+              <ul class="pr-files">
+                <li>
+                  <svg class="ic" viewBox="0 0 12 14" aria-hidden="true"><path d="M7.5.5H2A1.5 1.5 0 0 0 .5 2v10A1.5 1.5 0 0 0 2 13.5h8a1.5 1.5 0 0 0 1.5-1.5V4.5L7.5.5Z"/><path d="M7.5.5v4h4"/></svg>
+                  <span class="pr-path">app/pricing/page.tsx</span>
+                  <span class="add">+86</span><span class="del">−0</span>
+                </li>
+                <li>
+                  <svg class="ic" viewBox="0 0 12 14" aria-hidden="true"><path d="M7.5.5H2A1.5 1.5 0 0 0 .5 2v10A1.5 1.5 0 0 0 2 13.5h8a1.5 1.5 0 0 0 1.5-1.5V4.5L7.5.5Z"/><path d="M7.5.5v4h4"/></svg>
+                  <span class="pr-path">components/nav.tsx</span>
+                  <span class="add">+4</span><span class="del">−1</span>
+                </li>
+                <li>
+                  <svg class="ic" viewBox="0 0 12 14" aria-hidden="true"><path d="M7.5.5H2A1.5 1.5 0 0 0 .5 2v10A1.5 1.5 0 0 0 2 13.5h8a1.5 1.5 0 0 0 1.5-1.5V4.5L7.5.5Z"/><path d="M7.5.5v4h4"/></svg>
+                  <span class="pr-path">content/plans.json</span>
+                  <span class="add">+22</span><span class="del">−3</span>
+                </li>
+              </ul>
+
+              <div class="pr-checks">
+                <svg class="tick" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7.25"/><path d="M4.75 8.25 7 10.5l4.25-4.5"/></svg>
+                <span>All checks passed</span>
+                <span class="pr-sep">·</span>
+                <span class="pr-muted">build, tests, preview</span>
+              </div>
+            </div>
+
+            <div class="pr-foot">
+              <span class="pr-muted">Opened by Prompt Bar · 41s ago</span>
+              <span class="pr-preview">Preview ready</span>
+            </div>
+          </div>
         </div>
       </section>
 
