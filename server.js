@@ -27,7 +27,18 @@ http
     if (!fs.existsSync(file) && fs.existsSync(`${file}.html`)) file = `${file}.html`;
     fs.readFile(file, (err, body) => {
       if (err) {
-        res.writeHead(404, { "content-type": "text/plain" }).end("Not found");
+        fs.readFile(path.join(root, "404.html"), (notFoundErr, page) => {
+          if (notFoundErr) {
+            res.writeHead(404, { "content-type": "text/plain" }).end("Not found");
+            return;
+          }
+          res
+            .writeHead(404, {
+              "content-type": types[".html"],
+              "cache-control": "no-store",
+            })
+            .end(page);
+        });
         return;
       }
       res
