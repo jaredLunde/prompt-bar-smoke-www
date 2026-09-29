@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Slow but green
-        run: sleep 40 && test -f index.html
+        run: sleep 150 && test -f index.html
